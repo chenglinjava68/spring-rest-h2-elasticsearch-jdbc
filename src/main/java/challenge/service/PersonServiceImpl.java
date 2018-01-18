@@ -36,7 +36,6 @@ public class PersonServiceImpl {
 	
 	public Map<String, List<String>> getFollowingAndFollowers(int userId) {
 		Map<String, List<String>> result = new HashMap<String, List<String>>();
-		
 		List<Following> followings = followingServiceImpl.getFollowings(userId);
 		List<Following> followers = followerServiceImpl.getFollowers(userId);
 		

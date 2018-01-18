@@ -20,6 +20,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 	
 	@ExceptionHandler(value = { NullPointerException.class})
     protected ResponseEntity<Object> handleNullPointerExceptions(RuntimeException ex, WebRequest request) {
+		logger.error("NullPointerException occured: " + ex.getMessage());
         String bodyOfResponse = "Error occurred due to null value reference";
         return handleExceptionInternal(ex, bodyOfResponse, 
           new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
@@ -27,6 +28,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 	
 	@ExceptionHandler(value = { DataAccessException.class})
     protected ResponseEntity<Object> handleDataAccessExceptions(RuntimeException ex, WebRequest request) {
+		logger.error("DataAccessException occured: " + ex.getMessage());
         String bodyOfResponse = "Sorry, something went wrong while processing the request. Please try again later!";
         return handleExceptionInternal(ex, bodyOfResponse, 
           new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);

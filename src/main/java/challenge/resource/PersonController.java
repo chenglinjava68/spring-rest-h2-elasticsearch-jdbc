@@ -24,8 +24,7 @@ public class PersonController {
 	
 	@GetMapping(path="/FollowingAndFollowers", produces=MediaType.APPLICATION_JSON_VALUE)
 	private ResponseEntity<Map<String, List<String>>> getFollowingAndFollowers(Principal principal) {
-		int userId = 2;
-		Map<String, List<String>> result = personServiceImpl.getFollowingAndFollowers(userId);
+		Map<String, List<String>> result = personServiceImpl.getFollowingAndFollowers(Integer.valueOf(principal.getName()));
 		
 		return new ResponseEntity<Map<String, List<String>>> (result, HttpStatus.OK);
 	}
